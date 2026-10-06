@@ -20,5 +20,14 @@ pipeline {
                 '''
             }
         }
+        stage('Test') {
+            
+            sh '''
+                echo "Test stage"
+                CI=true npm test -- --watchAll=false
+                test -f build/index.html                
+            '''
+
+        }
     }
 }
